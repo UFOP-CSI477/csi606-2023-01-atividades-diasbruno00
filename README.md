@@ -3,11 +3,11 @@
 
 ## Atualize os seus dados
 
-- Nome:
-- Matrícula:
-- Curso:
-- Semestre/Ano correntes:
-- Link para o seu GitHub:
+- Nome: Bruno Dias Pinto
+- Matrícula: 18.2.8144
+- Curso: Sistema de informação
+- Semestre/Ano correntes: 1/2023
+- Link para o seu GitHub: <https://github.com/>
 
 ## [Projeto final:](./Projeto/README.md)
 
