@@ -1,35 +1,27 @@
 # **CSI606-2021-02 - Remoto - Proposta de Trabalho Final**
 
-## *Aluna(o): Princesa Leia (Luke Skywalker)*
-
---------------
-
-<!-- Descrever um resumo sobre o trabalho. -->
+## Aluna(o): Bruno Dias Pinto
 
 ### Resumo
 
-  (Apresentar um breve resumo sobre o seu trabalho, indicando o contexto e as principais funcionalidades.)
+O projeto tem por finalidade de ajudar pessoas que desejam adotar animais de estimação.
 
-<!-- Apresentar o tema. -->
 ### 1. Tema
 
-  O trabalho final tem como tema o desenvolvimento de ...
+Sistema web de adoção de animais
 
-<!-- Descrever e limitar o escopo da aplicação. -->
 ### 2. Escopo
 
-  Este projeto terá as seguintes funcionalidades...
+Este projeto terá as seguintes funcionalidades, cadastro de pessoas e animais, sistema de login, busca de animais, historico de vacinação e sistema de recomendação baseado no perfil e exclusão de animais do sistema apos a confimarção da adoção e alteração dos dados cadastrados.
 
-<!-- Apresentar restrições de funcionalidades e de escopo. -->
 ### 3. Restrições
 
-  Neste trabalho não serão considerados ...
+Neste trabalho não sera considerado o processo de entrevista para analise da pessoa ser considerada apta ou não para adoção.
 
-<!-- Construir alguns protótipos para a aplicação, disponibilizá-los no Github e descrever o que foi considerado. //-->
 ### 4. Protótipo
 
-  Protótipos para as páginas (descrever quais páginas) foram elaborados, e podem ser encontrados em...
+Protótipos para as páginas (descrever quais páginas) foram elaborados, e podem ser encontrados em...
 
 ### 5. Referências
 
-  Referências podem ser incluídas, caso necessário. Utilize o padrão ABNT.
+Referências podem ser incluídas, caso necessário. Utilize o padrão ABNT.
