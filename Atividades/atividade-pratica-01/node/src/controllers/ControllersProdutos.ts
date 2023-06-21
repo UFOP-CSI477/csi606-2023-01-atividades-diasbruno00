@@ -1,10 +1,24 @@
 import { Produtos } from "../model/Produtos";
-import {Request, Response} from "express";
-export const getProdutos  = (req: Request, res: Response) => {
+import {request, Request, Response} from "express";
+import {ProdutoDAO} from "../database/ProdutoDAO";
 
-     const produto = new Produtos('rua aleatoria 90','31','padre faria','0987','888888','909090');
+export const getProdutos  = async (req: Request, res: Response) => {
+     const banco = new ProdutoDAO()
 
-     res.json({produto})
+     try{
+         const listaDeProdutos = await  banco.listaDeProdutos()
+          console.log(listaDeProdutos)
+
+          res.json({listaDeProdutos})
+
+     }catch (e){
+          console.log(e)
+     }
+
 };
+
+export const setProdutos = (req: Request, res: Response) =>{
+
+}
 
 
