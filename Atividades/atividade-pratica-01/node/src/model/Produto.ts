@@ -1,15 +1,15 @@
-export  class Produtos {
+export  class Produto {
 
    private _descrisao: string
    private _valorUnitario: number
    private _criandoEm: string
    private _atualizadoEm: string
 
-    constructor(descrisao:string,valor:number, criandoEm:string, atualizadoEm:string) {
-       this._descrisao =descrisao
+    constructor(descrisao:string,valor:number) {
+        this._descrisao =descrisao
         this._valorUnitario = valor
-        this._criandoEm = criandoEm
-        this._atualizadoEm = atualizadoEm;
+        this._criandoEm = this.getData()
+        this._atualizadoEm = this.getData()
     }
 
     get valorUnitario(): number {
@@ -43,4 +43,27 @@ export  class Produtos {
     set atualizadoEm(value: string) {
         this._atualizadoEm = value;
     }
+
+    public  getData = (): string =>{
+
+        const date = new Date()
+        const data = date.toLocaleDateString()
+
+        console.log(`valor da minha data : ${data}`)
+        return data
+
+    }
+
+    public getHora = (): string =>{
+        const date = new Date()
+
+        const hora = date.toLocaleTimeString()
+
+        console.log(`valor da minha hora : ${hora}`)
+
+        return hora
+
+    }
+
+
 }

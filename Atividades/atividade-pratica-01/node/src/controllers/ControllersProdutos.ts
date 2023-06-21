@@ -1,23 +1,37 @@
-import { Produtos } from "../model/Produtos";
-import {request, Request, Response} from "express";
+import {Produto} from "../model/Produto";
+import {Request, Response} from "express";
 import {ProdutoDAO} from "../database/ProdutoDAO";
 
-export const getProdutos  = async (req: Request, res: Response) => {
-     const banco = new ProdutoDAO()
+export const getProdutos = async (req: Request, res: Response) => {
 
-     try{
-         const listaDeProdutos = await  banco.listaDeProdutos()
-          console.log(listaDeProdutos)
+    const banco = new ProdutoDAO()
 
-          res.json({listaDeProdutos})
+    let lista: Produto
 
-     }catch (e){
-          console.log(e)
-     }
+    try {
 
-};
+        lista = await banco.listaDeProdutos()
+        
+    } catch (e) {
+        console.log(e)
+        res.json({sucesso: 'false'})
+    }
 
-export const setProdutos = (req: Request, res: Response) =>{
+    res.json({sucesso: 'true'})
+
+}
+
+export const setProdutos = (req: Request, res: Response) => {
+
+    const produto = new Produto('Play 9', 5000)
+
+
+    const produtoDao = new ProdutoDAO()
+
+    produtoDao.inserirNoBD(produto)
+
+    res.json({sucesso: 'true'})
+
 
 }
 
