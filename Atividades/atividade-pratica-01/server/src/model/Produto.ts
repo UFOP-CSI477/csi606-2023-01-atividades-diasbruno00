@@ -18,7 +18,6 @@ export  class Produto {
         const date = new Date()
         const data = date.toLocaleDateString()
 
-        console.log(`valor da minha data : ${data}`)
         return data
 
     }
@@ -29,12 +28,9 @@ export  class Produto {
 
         const hora = date.toLocaleTimeString()
 
-        console.log(`valor da minha hora : ${hora}`)
-
         return hora
 
     }
-
 
     get valorUnitario(): number {
         return this._valorUnitario;

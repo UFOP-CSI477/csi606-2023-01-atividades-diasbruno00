@@ -2,6 +2,7 @@ import Conexao from "./Conexao";
 import { Produto } from "../model/Produto";
 
 export class ProdutoDAO {
+
     public inserirNoBD(produto: Produto): Promise<any> {
         return new Promise((resolve, reject) => {
             Conexao.query(
@@ -22,7 +23,23 @@ export class ProdutoDAO {
     public buscaProdutoPorId(id:Number): Promise<Produto[]> {
         return new Promise((resolve, reject) => {
             Conexao.query(
-                `SELECT * FROM PRODUTOS WHERE ${id}`,
+                'SELECT * FROM PRODUTOS WHERE ID = ?',[id],
+                (erro, resultado) => {
+                    if (erro) {
+                        reject(erro)
+                        return
+                    } else {
+                        return resolve(resultado);
+                    }
+                }
+            )
+        })
+    }
+
+    public buscaProdutoPorDescrisao(descrisao:string): Promise<Produto[]> {
+        return new Promise((resolve, reject) => {
+            Conexao.query(
+                'SELECT * FROM PRODUTOS WHERE DESCRISAO = ?',[descrisao],
                 (erro, resultado) => {
                     if (erro) {
                         reject(erro)
