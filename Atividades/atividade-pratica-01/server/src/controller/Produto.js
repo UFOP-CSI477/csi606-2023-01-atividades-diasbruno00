@@ -1,17 +1,16 @@
-import { Produto } from "../model/Produto";
-import { Request, Response } from "express";
-import { ProdutoDAO } from "../database/ProdutoDAO";
+import Produto from "../model/Produto.js";
+import ProdutoDAO from "../database/ProdutoDao.js";
 
 export default class ControllerProduto {
 
-    private bancoProduto
+    
 
     constructor() {
         this.bancoProduto = new ProdutoDAO()
     }
 
 
-    public recuperarTodosProdutos = async (req: Request, res: Response) => {
+     recuperarTodosProdutos = async (req, res) => {
 
 
         let listaDeProdutos
@@ -30,14 +29,12 @@ export default class ControllerProduto {
 
     }
 
-    public recuperarProdutoPorId = async (req: Request, res: Response) => {
+     recuperarProdutoPorId = async (req , res) => {
         let produto
         let id
         try {
             id = parseInt(req.params.id)
             produto = await this.bancoProduto.buscaProdutoPorId(id)
-            console.log(produto)
-            console.log('imprimiu')
         } catch (e) {
             console.log(e)
             res.json({ erro: `erro ao recuperar o produto do id ${id}` })
@@ -46,7 +43,7 @@ export default class ControllerProduto {
         res.json(produto)
 
     }
-    public recuperarProdutoPorDescrisao = async (req: Request, res: Response) => {
+     recuperarProdutoPorDescrisao = async (req, res ) => {
         let descrisao
         let produto
         try {
@@ -62,7 +59,7 @@ export default class ControllerProduto {
         res.json(produto)
     }
 
-    public salvarProduto = (req: Request, res: Response) => {
+     salvarProduto = (req , res ) => {
 
         try {
 
@@ -70,7 +67,7 @@ export default class ControllerProduto {
 
             const produto = new Produto(descrisao, valorUnitario)
 
-            this.bancoProduto.inserirNoBD(produto)
+            this.bancoProduto.salvarProdutoNoBD(produto)
 
         } catch (e) {
 
@@ -81,7 +78,8 @@ export default class ControllerProduto {
         res.json({ sucesso: 'Produto salvo com sucesso' })
 
     }
-    public excluirProduto = (req: Request, res: Response) => {
+
+     excluirProduto = (req, res ) => {
 
         try {
 
@@ -101,7 +99,7 @@ export default class ControllerProduto {
     }
 
 
-    public atualizarProduto = (req: Request, res: Response) => {
+     atualizarProduto = (req, res) => {
 
         try {
 

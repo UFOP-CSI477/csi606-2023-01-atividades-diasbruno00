@@ -1,12 +1,11 @@
-import Conexao from "./Conexao";
-import { Produto } from "../model/Produto";
+import conexao from "./Conexao.js";
 
-export class ProdutoDAO {
+export default class ProdutoDAO {
 
-    public inserirNoBD(produto: Produto): Promise<any> {
+     salvarProdutoNoBD(produto) {
         return new Promise((resolve, reject) => {
-            Conexao.query(
-                'INSERT INTO PRODUTOS (descrisao, valorUnitario, criadoEm)  VALUES (?,?,?)',[produto.descrisao,produto.valorUnitario,produto.criadoEm],
+            conexao.query(
+                'INSERT INTO PRODUTOS (descrisao, valorUnitario, criadoEm)  VALUES (?,?,?)', [produto.descrisao, produto.valorUnitario, produto.criadoEm],
                 (erro, resultado) => {
                     if (erro) {
                         reject(erro);
@@ -19,11 +18,11 @@ export class ProdutoDAO {
         })
 
     }
-    
-    public buscaProdutoPorId(id:Number): Promise<Produto[]> {
+
+     buscaProdutoPorId(id) {
         return new Promise((resolve, reject) => {
-            Conexao.query(
-                'SELECT * FROM PRODUTOS WHERE ID = ?',[id],
+            conexao.query(
+                'SELECT * FROM PRODUTOS WHERE ID = ?', [id],
                 (erro, resultado) => {
                     if (erro) {
                         reject(erro)
@@ -36,10 +35,10 @@ export class ProdutoDAO {
         })
     }
 
-    public buscaProdutoPorDescrisao(descrisao:string): Promise<Produto[]> {
+     buscaProdutoPorDescrisao(descrisao) {
         return new Promise((resolve, reject) => {
-            Conexao.query(
-                'SELECT * FROM PRODUTOS WHERE DESCRISAO = ?',[descrisao],
+            conexao.query(
+                'SELECT * FROM PRODUTOS WHERE DESCRISAO = ?', [descrisao],
                 (erro, resultado) => {
                     if (erro) {
                         reject(erro)
@@ -52,9 +51,9 @@ export class ProdutoDAO {
         })
     }
 
-    public listaDeProdutos(): Promise<Produto[]> {
+     listaDeProdutos() {
         return new Promise((resolve, reject) => {
-            Conexao.query(
+            conexao.query(
                 "SELECT * FROM PRODUTOS",
                 (erro, resultado) => {
                     if (erro) {
@@ -72,9 +71,9 @@ export class ProdutoDAO {
     }
 
 
-    public deleteProduto(id: Number): Promise<any> {
+     deleteProduto(id) {
         return new Promise((resolve, reject) => {
-            Conexao.query(
+            conexao.query(
                 `DELETE FROM PRODUTOS WHERE ID = ${id}`,
                 (erro, resultado) => {
                     if (erro) {
@@ -91,10 +90,10 @@ export class ProdutoDAO {
 
     }
 
-    public updateProduto(produto: Produto, id: Number): Promise<any> {
+     updateProduto(produto, id) {
         return new Promise((resolve, reject) => {
-            Conexao.query(
-                'update produtos set descrisao = ?, valorUnitario= ?, atualizadoEm = ? where id = ?',[produto.descrisao,produto.valorUnitario,produto.getData(),id],
+            conexao.query(
+                'update produtos set descrisao = ?, valorUnitario= ?, atualizadoEm = ? where id = ?', [produto.descrisao, produto.valorUnitario, produto.atualizadoEm, id],
                 (erro, resultado) => {
                     if (erro) {
                         reject(erro)
