@@ -21,7 +21,7 @@ export default class ControllerEstados {
             res.json({ erro: `erro ao lista produto do id ${id}` })
         }
 
-        res.json({ estado })
+        res.json( estado )
     }
 
      recuperarEstadoPorNome = async (req, res ) => {
@@ -38,7 +38,7 @@ export default class ControllerEstados {
             res.json({ erro: `erro ao lista produto do nome ${nome}` })
         }
 
-        res.json({ estado })
+        res.json( estado )
 
     }
 
@@ -71,7 +71,7 @@ export default class ControllerEstados {
             console.log(error)
         }
 
-        res.json({ listaDeEstados })
+        res.json(listaDeEstados )
 
     }
      atualizarEstados = (req, res ) => {

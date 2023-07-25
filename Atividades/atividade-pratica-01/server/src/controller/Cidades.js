@@ -1,4 +1,6 @@
 import CidadesDao from "../database/CidadesDao.js"
+import EstadosDao from "../database/EstadosDao.js"
+
 import Cidades from "../model/Cidade.js"
 
 export default class ControllerCidades {
@@ -28,11 +30,12 @@ export default class ControllerCidades {
         let listaDeCidades
         try {
             listaDeCidades = await this.bancoCidades.listaDeCidades()
+           
         } catch (error) {
             console.log(error)
             res.json({erro : `erro ao listar todas as cidades`})
         }
-        res.json({listaDeCidades})
+        res.json(listaDeCidades)
     }
 
      excluirCidade =  (req  , res ) => {
@@ -79,7 +82,7 @@ export default class ControllerCidades {
             res.json({ erro: `erro ao lista cidade do id ${id}` })
         }
 
-        res.json({ cidade })
+        res.json( cidade )
     }
 
      recuperarCidadePorNome = async (req , res ) => {
@@ -95,6 +98,6 @@ export default class ControllerCidades {
             res.json({ erro: `erro ao lista cidade do nome ${nome}` })
         }
     
-        res.json({ cidade })
+        res.json( cidade )
     }
 }

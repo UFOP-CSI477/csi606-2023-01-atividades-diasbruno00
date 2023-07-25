@@ -5,13 +5,17 @@ import ControllerProduto from "../controller/Produto.js"
 import ControllerUsuarios from '../controller/Usuario.js';
 import ControllerEstados from '../controller/Estados.js';
 import ControllerCidades from '../controller/Cidades.js';
+import ControllerEnderecos from "../controller/Enderecos.js";
+import ControllerCompras from "../controller/Compras.js";
 
 const controllerProduto = new ControllerProduto()
 const controllerUsuarios = new ControllerUsuarios()
 const controllerEstados = new ControllerEstados()
 const controllerCidades = new ControllerCidades()
+const controllerEnderecos = new ControllerEnderecos()
+const controllerCompras = new ControllerCompras()
 
-// rotas controller Produto
+// rotas controller Produtos
 router.get('/produtos', controllerProduto.recuperarTodosProdutos)
 router.get('/produto/:id',controllerProduto.recuperarProdutoPorId)
 router.get('/produto/descrisao/:descrisao',controllerProduto.recuperarProdutoPorDescrisao)
@@ -42,5 +46,19 @@ router.get('/cidade/:id',controllerCidades.recuperarCidadePorId)
 router.get('/cidade/nome/:nome',controllerCidades.recuperarCidadePorNome)
 router.delete('/delete/cidade/:id',controllerCidades.excluirCidade)
 router.put('/update/cidade/:id',controllerCidades.atualizarCidade)
+
+// rotas controller Enderecos
+router.post("/endereco", controllerEnderecos.salvarEndereco)
+router.get("/enderecos", controllerEnderecos.recuperarTodosEnderecos)
+router.delete('/delete/endereco/:id',controllerEnderecos.excluirEndereco)
+router.put('/update/endereco/:id', controllerEnderecos.atualizarEndereco)
+router.get('/endereco/:id',controllerEnderecos.recuperarEnderecoPorId)
+
+// Rotas Controller Compras
+router.get('/compras', controllerCompras.recuprarTodasAsCompras)
+router.get('/compras/:id',controllerCompras.recuperarComprarPorId)
+router.post('/compra',controllerCompras.salvarCompra)
+router.delete('/delete/compra/:id',controllerCompras.deletarCompra)
+router.put('/update/compra/:id',controllerCompras.atualizarCompras)
 
 export default router

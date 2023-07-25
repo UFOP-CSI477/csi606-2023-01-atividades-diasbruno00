@@ -3,7 +3,7 @@ export default class Data {
      static getData = ()  => {
 
         const date = new Date()
-        const data = date.toLocaleDate()
+        const data = date.toLocaleDateString()
 
         return data
 

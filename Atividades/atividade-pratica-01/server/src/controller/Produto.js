@@ -61,6 +61,8 @@ export default class ControllerProduto {
 
      salvarProduto = (req , res ) => {
 
+        let resultadoProduto
+
         try {
 
             const { descrisao, valorUnitario } = req.body
@@ -75,7 +77,7 @@ export default class ControllerProduto {
             console.log(e)
         }
 
-        res.json({ sucesso: 'Produto salvo com sucesso' })
+        res.json({sucesso: 'Produto salvo com sucesso no banco de dados'})
 
     }
 

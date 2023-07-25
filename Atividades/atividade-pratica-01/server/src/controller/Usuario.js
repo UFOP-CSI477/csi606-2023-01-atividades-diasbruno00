@@ -19,7 +19,7 @@ export default class ControllerUsuarios {
             res.json({ erro: `erro ao buscar usuario do id ${id}` })
         }
 
-        res.json({ usuario })
+        res.json( usuario )
     }
 
      recuperarUsuarioPorNome = async (req , res) => {
@@ -34,7 +34,7 @@ export default class ControllerUsuarios {
             res.json({ erro: `erro ao buscar usuario pelo nome : ${nome}` })
         }
 
-        res.json({ usuario })
+        res.json(usuario )
     }
 
      recuperarTodosUsuarios = async (req , res ) => {
@@ -46,7 +46,7 @@ export default class ControllerUsuarios {
             console.log(error)
         }
 
-        res.json({ listaDeUsuarios })
+        res.json( listaDeUsuarios )
     }
 
      salvarUsuario = (req , res ) => {

@@ -1,10 +1,10 @@
 import conexao from "./Conexao.js";
 
-export default class EstadosDao {
-  buscarEstadoPorID(id) {
+export default class ComprasDao {
+  buscaComprasPorId(id) {
     return new Promise((resolve, reject) => {
       conexao.query(
-        "SELECT * FROM ESTADOS WHERE ID = ?",
+        "SELECT * FROM COMPRAS WHERE ID = ?",
         [id],
         (erro, resultado) => {
           if (erro) {
@@ -18,11 +18,11 @@ export default class EstadosDao {
     });
   }
 
-  buscarEstadosPorNome(nome) {
+  salvarComprasNoBD(compras) {
     return new Promise((resolve, reject) => {
       conexao.query(
-        "SELECT * FROM ESTADOS WHERE NOME = ?",
-        [nome],
+        "INSERT INTO COMPRAS (usuarioId,enderecoId, data, criadoEm)  VALUES (?,?,?, ?)",
+        [compras.usuarioId, compras.enderecoId, compras.data, compras.criadoEm],
         (erro, resultado) => {
           if (erro) {
             reject(erro);
@@ -35,26 +35,9 @@ export default class EstadosDao {
     });
   }
 
-  salvarEstadosNoBD(estado) {
+  listaDeCompras() {
     return new Promise((resolve, reject) => {
-      conexao.query(
-        "INSERT INTO ESTADOS (NOME,SIGLA, criadoEm)  VALUES (?,?,?)",
-        [estado.nome, estado.sigla, estado.criadoEm],
-        (erro, resultado) => {
-          if (erro) {
-            reject(erro);
-            return;
-          } else {
-            return resolve(resultado);
-          }
-        }
-      );
-    });
-  }
-
-  listaDeEstados() {
-    return new Promise((resolve, reject) => {
-      conexao.query("SELECT * FROM Estados", (erro, resultado) => {
+      conexao.query("SELECT * FROM COMPRAS", (erro, resultado) => {
         if (erro) {
           reject(erro);
           return;
@@ -65,10 +48,10 @@ export default class EstadosDao {
     });
   }
 
-  deleteEstado(id) {
+  deleteCompras(id) {
     return new Promise((resolve, reject) => {
       conexao.query(
-        `DELETE FROM ESTADOS WHERE ID = ${id}`,
+        `DELETE FROM COMPRAS WHERE ID = ${id}`,
         (erro, resultado) => {
           if (erro) {
             reject(erro);
@@ -81,10 +64,11 @@ export default class EstadosDao {
     });
   }
 
-  updateEstados(estado, id) {
+  updateCompras(compras, id) {
     return new Promise((resolve, reject) => {
-      "update estados set nome = ?, sigla = ?, atualizadoEm = ? where id = ?",
-        [estado.nome, estado.sigla, estado.atualizadoEm, id],
+      conexao.query(
+        "update compras set usuarioId = ? , enderecoId = ?, atualizadoEm = ? where id = ?",
+        [compras.usuarioId, compras.enderecoId, compras.atualizadoEm, id],
         (erro, resultado) => {
           if (erro) {
             reject(erro);
@@ -92,7 +76,8 @@ export default class EstadosDao {
           } else {
             return resolve(resultado);
           }
-        };
+        }
+      );
     });
   }
 }
