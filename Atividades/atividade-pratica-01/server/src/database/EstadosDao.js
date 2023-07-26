@@ -21,7 +21,7 @@ export default class EstadosDao {
   buscarEstadosPorNome(nome) {
     return new Promise((resolve, reject) => {
       conexao.query(
-        "SELECT * FROM ESTADOS WHERE NOME = ?",
+        "SELECT * FROM ESTADOS WHERE nomeEstado = ?",
         [nome],
         (erro, resultado) => {
           if (erro) {
@@ -38,7 +38,7 @@ export default class EstadosDao {
   salvarEstadosNoBD(estado) {
     return new Promise((resolve, reject) => {
       conexao.query(
-        "INSERT INTO ESTADOS (NOME,SIGLA, criadoEm)  VALUES (?,?,?)",
+        "INSERT INTO ESTADOS (nomeEstado,SIGLA, criadoEm)  VALUES (?,?,?)",
         [estado.nome, estado.sigla, estado.criadoEm],
         (erro, resultado) => {
           if (erro) {

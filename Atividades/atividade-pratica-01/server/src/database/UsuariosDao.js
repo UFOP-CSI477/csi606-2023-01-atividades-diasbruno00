@@ -22,7 +22,7 @@ export default class UsuariosDao {
      buscarUsuarioPorNome(nome ) {
         return new Promise((resolve, reject) => {
             conexao.query(
-                'SELECT * FROM USUARIOS WHERE NOME = ?', [nome]
+                'SELECT * FROM USUARIOS WHERE nomeUsuario = ?', [nome]
                 , (erro, resultado) => {
                     if (erro) {
                         reject(erro);
@@ -39,7 +39,7 @@ export default class UsuariosDao {
      salvarUsuarioNoBD(usuario) {
         return new Promise((resolve, reject) => {
             conexao.query(
-                'INSERT INTO USUARIOS(nome,email,senha,criadoEm)  VALUES (?,?,?,?)', [
+                'INSERT INTO USUARIOS(nomeUsuario,email,senha,criadoEm)  VALUES (?,?,?,?)', [
                 usuario.nome, usuario.email, usuario.senha, usuario.criadoEm
             ],
                 (erro, resultado) => {
@@ -96,7 +96,7 @@ export default class UsuariosDao {
      updateUsuario(usuario, id ) {
         return new Promise((resolve, reject) => {
             conexao.query(
-                'update usuarios set nome = ?, email = ?, senha = ?, atualizadoEm = ? where id = ?', [
+                'update usuarios set nomeUsuario = ?, email = ?, senha = ?, atualizadoEm = ? where id = ?', [
                 usuario.nome, usuario.email, usuario.senha, usuario.atualizadoEm, id
             ],
                 (erro, resultado) => {

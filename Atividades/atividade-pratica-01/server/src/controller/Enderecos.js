@@ -44,15 +44,16 @@ export default class ControllerEnderecos {
       res.json({ sucesso: "excluido com sucesso" });
     } catch (error) {
       console.log(error);
-      res.json({ erro: `erro ao excluir endereco id ${id}` });
+      res.json({ erro: `erro ao excluir endereco` });
     }
   };
 
   atualizarEndereco = async (req, res) => {
+
+
     try {
       const { usuarioId, rua, numero, bairro, cidadeId, telefone } = req.body;
       const id = req.params.id;
-
       const endereco = new Enderecos(
         usuarioId,
         rua,
@@ -66,18 +67,19 @@ export default class ControllerEnderecos {
       res.json({ sucesso: `Endereco salvo com sucesso ` });
     } catch (error) {
       console.log(error);
-      res.json({ erro: `erro ao atualizar endereco  id ${id}` });
+      res.json({ erro: `erro ao atualizar endereco ` });
     }
   };
 
   recuperarEnderecoPorId = async (req, res) => {
     try {
       const id = req.params.id;
+      console.log(id)
       const endereco = await this.banco.buscaEnderecoPorId(id);
       res.json(endereco);
     } catch (error) {
       console.log(error);
-      res.json({ erro: `erro ao lista produto id ${id}` });
+      res.json({ erro: `erro ao lista produto id` });
     }
   };
 }

@@ -7,7 +7,7 @@ export default class EnderecosDao {
   buscaEnderecoPorId(id)  {
     return new Promise((resolve, reject) => {
         conexao.query(
-            'SELECT * FROM ENDERECOS WHERE ID = ?', [id],
+            'select * from enderecos as en , cidades as ci, usuarios as usu, estados as es where en.usuarioId = usu.id and en.cidadeId = ci.id and  es.id  = ci.estadosId  and en.id = ? ', [id],
             (erro, resultado) =>  {
                 if (erro) {
                     reject(erro)
@@ -49,7 +49,7 @@ export default class EnderecosDao {
 listaDeEnderecos(){
     return new Promise((resolve, reject)   =>{
         conexao.query(
-            "SELECT * FROM ENDERECOS",
+            "select * from enderecos as en , cidades as ci, usuarios as usu, estados as es where en.usuarioId = usu.id and en.cidadeId = ci.id and  es.id  = ci.estadosId ",
             (erro, resultado)  => {
                 if (erro) {
                     reject(erro)

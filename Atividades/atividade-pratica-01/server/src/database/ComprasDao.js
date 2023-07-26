@@ -4,7 +4,7 @@ export default class ComprasDao {
   buscaComprasPorId(id) {
     return new Promise((resolve, reject) => {
       conexao.query(
-        "SELECT * FROM COMPRAS WHERE ID = ?",
+        "select * from enderecos as en, usuarios as usu , compras as com , cidades as ci where com.usuarioId = usu.id and com.enderecoId = en.id and en.cidadeId = ci.id and com.id = ?",
         [id],
         (erro, resultado) => {
           if (erro) {
@@ -37,7 +37,7 @@ export default class ComprasDao {
 
   listaDeCompras() {
     return new Promise((resolve, reject) => {
-      conexao.query("SELECT * FROM COMPRAS", (erro, resultado) => {
+      conexao.query("select * from enderecos as en, usuarios as usu , compras as com , cidades as ci where com.usuarioId = usu.id and com.enderecoId = en.id and en.cidadeId = ci.id", (erro, resultado) => {
         if (erro) {
           reject(erro);
           return;
@@ -67,8 +67,8 @@ export default class ComprasDao {
   updateCompras(compras, id) {
     return new Promise((resolve, reject) => {
       conexao.query(
-        "update compras set usuarioId = ? , enderecoId = ?, atualizadoEm = ? where id = ?",
-        [compras.usuarioId, compras.enderecoId, compras.atualizadoEm, id],
+        "update compras set usuarioId = ? , enderecoId = ?, data = ?, atualizadoEm = ? where id = ?",
+        [compras.usuarioId, compras.enderecoId, compras.data, compras.atualizadoEm, id],
         (erro, resultado) => {
           if (erro) {
             reject(erro);

@@ -23,14 +23,14 @@ export default class ControllerCompras {
       res.json(compra);
     } catch (error) {
       console.log(error);
-      res.json({ erro: `erro ao recuperar compra de id ${id}` });
+      res.json({ erro: `erro ao recuperar compra ` });
     }
   };
 
   salvarCompra = async (req, res) => {
     try {
-      const { usuarioId, enderecoId } = req.body;
-      const compras = new Compras(usuarioId, enderecoId);
+      const { usuarioId, enderecoId, data } = req.body;
+      const compras = new Compras(usuarioId, enderecoId,data);
      const resposta = await  this.banco.salvarComprasNoBD(compras);
      console.log(resposta)
       res.json({ sucesso: "salvo no banco com sucesso" });
@@ -49,21 +49,21 @@ export default class ControllerCompras {
       res.json({ sucesso: "excluido com sucesso" });
     } catch (error) {
       console.log(error);
-      res.json({ erro: `erro ao exluir comprar id ${id}` });
+      res.json({ erro: `erro ao exluir comprar` });
     }
   };
 
   atualizarCompras =  (req, res) => {
     try {
-      const { usuarioId, enderecoId } = req.body;
+      const { usuarioId, enderecoId,data } = req.body;
       const id = req.params.id;
-      const compras = new Compras(usuarioId, enderecoId);
+      const compras = new Compras(usuarioId, enderecoId,data);
       this.banco.updateCompras(compras, id);
       console.log(resposta)
       res.json({ sucesso: "salvo no banco com sucesso" });
     } catch (error) {
         console.log(error)
-        res.json({erro: `erro ao atualizar compra id ${id}`})
+        res.json({erro: `erro ao atualizar compra`})
     }
   };
 }

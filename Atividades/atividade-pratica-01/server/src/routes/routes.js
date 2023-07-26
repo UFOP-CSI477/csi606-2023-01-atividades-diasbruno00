@@ -24,7 +24,7 @@ router.delete('/delete/produto/:id',controllerProduto.excluirProduto)
 router.put('/update/produto/:id',controllerProduto.atualizarProduto)
 
 // rotas controller Usuario
-router.get('/usuario',controllerUsuarios.recuperarTodosUsuarios)
+router.get('/usuarios',controllerUsuarios.recuperarTodosUsuarios)
 router.get('/usuario/:id',controllerUsuarios.recuperarUsuarioPorId)
 router.get('/usuario/nome/:nome',controllerUsuarios.recuperarUsuarioPorNome)
 router.post('/usuario',controllerUsuarios.salvarUsuario)
@@ -56,7 +56,7 @@ router.get('/endereco/:id',controllerEnderecos.recuperarEnderecoPorId)
 
 // Rotas Controller Compras
 router.get('/compras', controllerCompras.recuprarTodasAsCompras)
-router.get('/compras/:id',controllerCompras.recuperarComprarPorId)
+router.get('/compra/:id',controllerCompras.recuperarComprarPorId)
 router.post('/compra',controllerCompras.salvarCompra)
 router.delete('/delete/compra/:id',controllerCompras.deletarCompra)
 router.put('/update/compra/:id',controllerCompras.atualizarCompras)

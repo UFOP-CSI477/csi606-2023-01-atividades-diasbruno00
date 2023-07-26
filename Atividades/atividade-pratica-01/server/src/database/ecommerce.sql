@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `cidades`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cidades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) DEFAULT NULL,
+  `nomeCidade` varchar(50) DEFAULT NULL,
   `estadosId` int(11) DEFAULT NULL,
   `criadoEm` varchar(20) DEFAULT NULL,
   `atualizadoEm` varchar(20) DEFAULT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `cidades` (
 
 LOCK TABLES `cidades` WRITE;
 /*!40000 ALTER TABLE `cidades` DISABLE KEYS */;
-INSERT INTO `cidades` VALUES (1,'São Paulo',3,'05/07/2023',NULL);
+INSERT INTO `cidades` VALUES (1,'Belo Horizonte',3,'05/07/2023',NULL);
 /*!40000 ALTER TABLE `cidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +55,7 @@ CREATE TABLE `compras` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuarioId` int(11) DEFAULT NULL,
   `enderecoId` int(11) DEFAULT NULL,
-  `data` varchar(12) DEFAULT NULL,
+  `data` varchar(20) DEFAULT NULL,
   `atualizadoEm` varchar(12) DEFAULT NULL,
   `criadoEm` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -63,7 +63,7 @@ CREATE TABLE `compras` (
   KEY `compras_ibfk_2` (`enderecoId`),
   CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`usuarioId`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `compras_ibfk_2` FOREIGN KEY (`enderecoId`) REFERENCES `enderecos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +72,7 @@ CREATE TABLE `compras` (
 
 LOCK TABLES `compras` WRITE;
 /*!40000 ALTER TABLE `compras` DISABLE KEYS */;
+INSERT INTO `compras` VALUES (5,3,7,'20/03/2020',NULL,'26/07/2023');
 /*!40000 ALTER TABLE `compras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +130,7 @@ CREATE TABLE `enderecos` (
   KEY `enderecos_ibfk_1` (`usuarioId`),
   CONSTRAINT `enderecos_ibfk_1` FOREIGN KEY (`usuarioId`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `enderecos_ibfk_2` FOREIGN KEY (`cidadeId`) REFERENCES `cidades` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,6 +139,7 @@ CREATE TABLE `enderecos` (
 
 LOCK TABLES `enderecos` WRITE;
 /*!40000 ALTER TABLE `enderecos` DISABLE KEYS */;
+INSERT INTO `enderecos` VALUES (7,2,'rua aleatoria','Galo',1,'031','26/07/2023',NULL,13);
 /*!40000 ALTER TABLE `enderecos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +152,7 @@ DROP TABLE IF EXISTS `estados`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) DEFAULT NULL,
+  `nomeEstado` varchar(50) DEFAULT NULL,
   `sigla` varchar(5) DEFAULT NULL,
   `criadoEm` varchar(20) DEFAULT NULL,
   `atualizadoEm` varchar(20) DEFAULT NULL,
@@ -164,7 +166,7 @@ CREATE TABLE `estados` (
 
 LOCK TABLES `estados` WRITE;
 /*!40000 ALTER TABLE `estados` DISABLE KEYS */;
-INSERT INTO `estados` VALUES (3,'São Paulo','SP','05/07/2023',NULL);
+INSERT INTO `estados` VALUES (3,'Minas Gerais','MG','05/07/2023',NULL);
 /*!40000 ALTER TABLE `estados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,13 +206,13 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) DEFAULT NULL,
+  `nomeUsuario` varchar(100) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `senha` varchar(20) DEFAULT NULL,
   `criadoEm` varchar(20) DEFAULT NULL,
   `atualizadoEm` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,4 +234,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-25 19:33:40
+-- Dump completed on 2023-07-26 13:47:17
