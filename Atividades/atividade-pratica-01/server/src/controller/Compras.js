@@ -59,7 +59,6 @@ export default class ControllerCompras {
       const id = req.params.id;
       const compras = new Compras(usuarioId, enderecoId,data);
       this.banco.updateCompras(compras, id);
-      console.log(resposta)
       res.json({ sucesso: "salvo no banco com sucesso" });
     } catch (error) {
         console.log(error)

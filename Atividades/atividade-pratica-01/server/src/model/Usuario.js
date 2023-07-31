@@ -4,7 +4,7 @@ export default class Usuarios {
 
 
     constructor(nome, email, senha) {
-        this._nome = nome
+        this._nomeUsuario = nome
         this._email = email
         this._senha = senha
         this._criadoEm = Data.getData()

@@ -40,7 +40,7 @@ export default class UsuariosDao {
         return new Promise((resolve, reject) => {
             conexao.query(
                 'INSERT INTO USUARIOS(nomeUsuario,email,senha,criadoEm)  VALUES (?,?,?,?)', [
-                usuario.nome, usuario.email, usuario.senha, usuario.criadoEm
+                usuario.nomeUsuario, usuario.email, usuario.senha, usuario.criadoEm
             ],
                 (erro, resultado) => {
                     if (erro) {
@@ -97,7 +97,7 @@ export default class UsuariosDao {
         return new Promise((resolve, reject) => {
             conexao.query(
                 'update usuarios set nomeUsuario = ?, email = ?, senha = ?, atualizadoEm = ? where id = ?', [
-                usuario.nome, usuario.email, usuario.senha, usuario.atualizadoEm, id
+                usuario.nomeUsuario, usuario.email, usuario.senha, usuario.atualizadoEm, id
             ],
                 (erro, resultado) => {
                     if (erro) {

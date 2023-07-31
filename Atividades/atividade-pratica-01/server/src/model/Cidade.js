@@ -4,7 +4,7 @@ export default class Cidades {
   
 
     constructor(nome, estadoId) {
-        this._nome = nome
+        this._nomeCidade = nome
         this._estadoId = estadoId
         this._criadoEm = Data.getData()
         this._atualizadoEm = Data.getData()

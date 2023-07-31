@@ -37,7 +37,7 @@ export default class CidadesDao {
      salvarCidadeNoBD(cidade ) {
         return new Promise((resolve, reject) =>  {
             conexao.query(
-                'INSERT INTO CIDADES (nomeCidade,estadosId, criadoEm)  VALUES (?,?,?)', [cidade.nome, cidade.estadoId, cidade.criadoEm],
+                'INSERT INTO CIDADES (nomeCidade,estadosId, criadoEm)  VALUES (?,?,?)', [cidade.nomeCidade, cidade.estadoId, cidade.criadoEm],
                 (erro, resultado)  => {
                     if (erro) {
                         reject(erro);
@@ -93,7 +93,7 @@ export default class CidadesDao {
      updateCidades(cidade, id)  {
         return new Promise((resolve, reject)=>  {
             conexao.query(
-                'update estados set nomeCidade = ?, estadoId= ?, atualizadoEm = ? where id = ?', [cidade.nome, cidade.estadoId, cidade.atualizadoEm, id],
+                'update estados set nomeCidade = ?, estadoId= ?, atualizadoEm = ? where id = ?', [cidade.nomeCidade, cidade.estadoId, cidade.atualizadoEm, id],
                 (erro, resultado)  => {
                     if (erro) {
                         reject(erro)

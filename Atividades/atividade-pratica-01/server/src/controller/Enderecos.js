@@ -19,7 +19,7 @@ export default class ControllerEnderecos {
         telefone
       );
       this.banco.salvarEnderecoNoBD(endereco);
-      res.json({ endereco });
+      res.json({ sucesso: "endereco salvo com sucesso" });
     } catch (error) {
       console.log(error);
       res.json({ erro: "erro ao salvar endereco" });

@@ -62,3 +62,5 @@ router.delete('/delete/compra/:id',controllerCompras.deletarCompra)
 router.put('/update/compra/:id',controllerCompras.atualizarCompras)
 
 export default router
+
+// produtos , compras e enderecos

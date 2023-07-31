@@ -4,7 +4,7 @@ export default class ComprasDao {
   buscaComprasPorId(id) {
     return new Promise((resolve, reject) => {
       conexao.query(
-        "select * from enderecos as en, usuarios as usu , compras as com , cidades as ci where com.usuarioId = usu.id and com.enderecoId = en.id and en.cidadeId = ci.id and com.id = ?",
+        "select com.id, com.usuarioId, com.enderecoId, com.data, en.rua, en.bairro, en.telefone, usu.nomeUsuario, usu.email, usu.senha, ci.nomeCidade from enderecos as en, usuarios as usu , compras as com , cidades as ci where com.usuarioId = usu.id and com.enderecoId = en.id and en.cidadeId = ci.id and com.id = ?",
         [id],
         (erro, resultado) => {
           if (erro) {
@@ -37,7 +37,7 @@ export default class ComprasDao {
 
   listaDeCompras() {
     return new Promise((resolve, reject) => {
-      conexao.query("select * from enderecos as en, usuarios as usu , compras as com , cidades as ci where com.usuarioId = usu.id and com.enderecoId = en.id and en.cidadeId = ci.id", (erro, resultado) => {
+      conexao.query(" select com.id, com.usuarioId, com.enderecoId, com.data, en.rua, en.bairro, en.telefone, usu.nomeUsuario, usu.email, usu.senha, ci.nomeCidade from enderecos as en, usuarios as usu , compras as com , cidades as ci where com.usuarioId = usu.id and com.enderecoId = en.id and en.cidadeId = ci.id;", (erro, resultado) => {
         if (erro) {
           reject(erro);
           return;
