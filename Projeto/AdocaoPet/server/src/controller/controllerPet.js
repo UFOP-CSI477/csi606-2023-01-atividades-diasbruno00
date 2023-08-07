@@ -14,6 +14,8 @@ export default class ControllerPet {
 
       const petSalvo = await PetDao.create(pet);
 
+      console.log(pet)
+
       res.json(petSalvo);
     } catch (error) {
       console.log(error);

@@ -3,10 +3,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
-import { ChangeEvent, FormEvent, useReducer, useState } from "react"
+import { FormEvent} from "react"
 import axios from 'axios'
 import { useRouter } from "next/navigation"
-import Input from '@/app/components/forms/Input'
 import Swal from 'sweetalert2';
 
 // htmlFormulario
@@ -48,34 +47,34 @@ export default function CreatePet() {
     }
 
     return (
-        <div className="container m-auto">
+        <div className="container ">
             <form onSubmit={handleSumit}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">nome</label>
-                    <Input name="nome" />
+                    <input type="text" name='nome' id='nome'  className="form-control"  required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">idade</label>
-                    <Input name="idade" />
+                    <input type="number" name='idade' id='idade'className="form-control" min={0} max={100}   required/>
                 </div>
                 <div className="mb-3 htmlForm-check">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">sexo</label>
-                    <Input name="sexo" />
+                    <input type="text" name='sexo' id='sexo' className="form-control"   required/>
 
                 </div>
                 <div className="mb-3 htmlForm-check">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">raca</label>
-                    <Input name="raca" />
+                    <input type="text" name='raca' id='raca' className="form-control"   required/>
 
                 </div>
                 <div className="mb-3 htmlForm-check">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">estado</label>
-                    <Input name="estado" />
+                    <input type="text" name='estado' id='estado'className="form-control"   required/>
 
                 </div>
                 <div className="mb-3 htmlForm-check">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">cidade</label>
-                    <Input name="cidade" />
+                    <input type="text" name='cidade' id='cidade' className="form-control" required />
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
