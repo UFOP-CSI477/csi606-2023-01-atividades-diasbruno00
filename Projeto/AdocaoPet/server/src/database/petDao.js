@@ -11,6 +11,9 @@ const PetDao = new Schema({
     sexo: {
       type: String
     },
+    tipo:{
+      type: String
+    },
     raca: {
       type: String
     },
@@ -22,7 +25,7 @@ const PetDao = new Schema({
     },
     status: {
       type: String
-    }
+    },
 });
 
 export default  mongoose.model("Pet", PetDao);

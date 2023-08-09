@@ -6,6 +6,7 @@
     idade: number,
     sexo: string,
     raca: string,
+    tipo: string,
     estado: string,
     cidade: string,
     status: string

@@ -1,12 +1,17 @@
+'use client'
+
 import PetTable from "@/app/components/PetTable"
-import InputPesquisar from "@/app/components/forms/InputPesquisa"
+import Menu from "@/app/components/menu/Menu";
+
 
 export default function ListPet(){
+
+   
   
     return(
         <>
-        <InputPesquisar />
-        <PetTable />
+        <Menu />
+        <PetTable  />
         </>
     )
 }

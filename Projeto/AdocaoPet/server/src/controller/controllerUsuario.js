@@ -9,16 +9,7 @@ export default class ControllerUsuario {
       const { nome, idade, sexo, cpf, email, telefone, estado, cidade } =
         req.body;
 
-      const usuario = new Usuario(
-        sexo,
-        idade,
-        sexo,
-        cpf,
-        email,
-        telefone,
-        estado,
-        cidade
-      );
+      const usuario = new Usuario(nome,idade,sexo,cpf,email,telefone,estado,cidade);
 
       const usuarioSalvo = await UsuarioDao.create(usuario);
       
