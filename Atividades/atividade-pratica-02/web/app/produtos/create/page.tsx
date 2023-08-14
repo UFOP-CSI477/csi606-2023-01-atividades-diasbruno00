@@ -24,7 +24,8 @@ export default function CreateProdutos(){
 
             const response = await axios.post('http://localhost:5555/produto', data)
             const produto = await response.data
-            alert('sucesso')
+            console.log(produto)
+            alert(`${produto.sucesso}`)
         
         } catch (error) {
             alert(`Erro na inclusão ${descrisao}`)
