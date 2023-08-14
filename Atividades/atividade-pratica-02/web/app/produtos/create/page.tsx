@@ -4,12 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import axios from 'axios';
 import { ChangeEvent, FormEvent, useState } from "react"
-
-
+import { useRouter } from "next/navigation";
 
 
 export default function CreateProdutos(){
-    
+    const {push} = useRouter()
+
     const [descrisao, setDescrisao] = useState('')
     const [valorUnitario, setValorUnitario] = useState('')
 
@@ -24,8 +24,8 @@ export default function CreateProdutos(){
 
             const response = await axios.post('http://localhost:5555/produto', data)
             const produto = await response.data
-            console.log(produto)
             alert(`${produto.sucesso}`)
+            push('/produtos/list')
         
         } catch (error) {
             alert(`Erro na inclusão ${descrisao}`)

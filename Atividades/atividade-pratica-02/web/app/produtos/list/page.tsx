@@ -1,10 +1,10 @@
 'use client'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 import ProdutoDTO from '@/app/types/ProdutoDTO'
 import axios from 'axios'
 import { ChangeEvent, useEffect, useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
@@ -65,8 +65,21 @@ export default function ProdutoTable() {
                                 <td>{produto.valorUnitario}</td>
                                 <td>{produto.criadoEm}</td>
                                 <td>{produto.atualizadoEm}</td>
-                                <Link href={`/produtos/edit/${produto.id}`}> Editar </Link>
-                                <Link href={`/produtos/excluir/${produto.id}`}> Excluir </Link>
+                                <button onClick={()=>{
+                                    push(`/produtos/edit/${produto.id}`)
+                                }} className="btn btn-success">Editar </button>
+                                
+                                <button  className ="btn btn-danger" onClick={ async ()=>{
+                                   const response =  await axios.delete(`http://localhost:5555/delete/produto/${produto.id}`)
+                                   const status = response.data
+                                   if(status.excluido){
+                                    alert(`sucesso ${produto.descrisao} excluido com sucesso`)
+                                    window.location.reload();
+                                   }else{
+                                    alert(`sucesso ${produto.descrisao} excluido com sucesso`)
+                                   }
+                                   console.log('click')
+                                }}>delete</button>
                                 </tr>
                             )
                         })

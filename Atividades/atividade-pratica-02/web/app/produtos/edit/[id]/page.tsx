@@ -1,8 +1,10 @@
 'use client'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import axios from 'axios'
-import ProdutoDTO from "@/app/types/ProdutoDTO";
-import { privateDecrypt } from "crypto";
+import { useRouter } from "next/navigation";
 
 
 async function retoraProdutoPorId(id: number) {
@@ -14,6 +16,8 @@ async function retoraProdutoPorId(id: number) {
 
 
 export default function ProdutoId({ params }: any) {
+
+    const {push} = useRouter()
 
     const [produto, setProduto] = useState<any>({});
     const [descrisao, setDescrisao] = useState('')
@@ -46,6 +50,7 @@ export default function ProdutoId({ params }: any) {
             const response = await axios.put(`http://localhost:5555/update/produto/${id}`, data)
             resultado = response.data
             alert(`${resultado.sucesso}`)
+            push('/produtos/list')
         } catch (error) {
             alert(`${resultado.erro}`)
         }
