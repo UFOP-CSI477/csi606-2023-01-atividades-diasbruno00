@@ -5,12 +5,15 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import axios from 'axios';
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { useRouter } from "next/navigation";
-import { retornaTodosOsUsuarios } from '@/app/repository/usuarios/funcoes';
+import {  retornaComprasPorId} from '@/app/repository/compras/funcoes';
 import { retornarTodosOsEnderecos } from '@/app/repository/enderecos/funcoes';
+import { retornaTodosOsUsuarios } from '@/app/repository/usuarios/funcoes';
 
-export default function CreateCompras() {
+export default function EditCompras({params}: any) {
 
     const { push } = useRouter()
+    const id = params.id
+
     const [usuarioId, setUsuarioId] = useState('')
     const [enderecoId, setEnderecoId] = useState('')
     const [datas, setData] = useState('')
@@ -20,13 +23,19 @@ export default function CreateCompras() {
 
     useEffect(() => {
 
-        retornaTodosOsUsuarios().then(data => setUsuario(data))
-            .catch(error => console.log(error))
-
+        retornaComprasPorId(id).then(data => {
+            setUsuarioId(data[0].usuarioId)
+            setEnderecoId(data[0].enderecoId)
+            setData(data[0].data)
+        })
+        .catch(error => console.log(error))
         retornarTodosOsEnderecos().then(data => setEmdereco(data))
-            .catch(error => console.log(error))
+        .catch(error => console.log(error))
 
-    }, [])
+        retornaTodosOsUsuarios().then(data => setUsuario(data))
+        .catch(error => console.log(error))
+
+    }, [id])
 
 
     const handleSumit = async (event: FormEvent) => {
@@ -40,10 +49,10 @@ export default function CreateCompras() {
         }
         try {
 
-            const response = await axios.post('http://localhost:5555/compra', data)
+            const response = await axios.put(`http://localhost:5555/update/compra/${id}`, data)
             const compra = await response.data
             alert(`${compra.sucesso}`)
-            push('/produtos/list')
+            push('/compras/list')
 
         } catch (error) {
             alert(`Erro na inclusão`)
@@ -53,7 +62,7 @@ export default function CreateCompras() {
     return (
 
         <div className="container col-md-9 ">
-            <h1>Cadastro de Compras: { }</h1>
+            <h1>Edicao de compras: { }</h1>
 
             <form onSubmit={handleSumit} >
 
@@ -91,7 +100,7 @@ export default function CreateCompras() {
                     <input type="date" value={datas} className="form-control" placeholder='Informe o valor unitariow do produto' onChange={(event: ChangeEvent<HTMLInputElement>) => { setData(event.target.value) }} required />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Cadastrar</button>
+                <button type="submit" className="btn btn-primary">Atualizar</button>
             </form>
         </div>
     )
