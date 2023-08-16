@@ -35,7 +35,7 @@ export default function ComprasTable() {
                 <div className="container-fluid">
                     <a className="navbar-brand"></a>
                     <form className="d-flex" role="search" method="get" >
-                        <input className="form-control me-2" type="search" value={busca} onChange={(event: ChangeEvent<HTMLInputElement>) => setBusca(event.target.value)} placeholder="Rua" aria-label="Search" />
+                        <input className="form-control me-2 " type="search" value={busca} onChange={(event: ChangeEvent<HTMLInputElement>) => setBusca(event.target.value)} placeholder="Nome do usuario" aria-label="Search" />
                     </form>
                 </div>
             </nav>
