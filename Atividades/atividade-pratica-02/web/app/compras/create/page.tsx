@@ -52,7 +52,7 @@ export default function CreateCompras() {
 
     return (
 
-        <div className="container col-md-9 ">
+        <div className="container col-md-9 p-5">
             <h1>Cadastro de Compras: { }</h1>
 
             <form onSubmit={handleSumit} >

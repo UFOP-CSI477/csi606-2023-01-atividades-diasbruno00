@@ -59,7 +59,7 @@ export default function ProdutoId({ params }: any) {
 
     return (
 
-        <div className="container col-md-9 ">
+        <div className="container col-md-9 p-5">
             <h1>Atualizão  do produto: {descrisao}</h1>
 
             <form onSubmit={atualizarProduto}>

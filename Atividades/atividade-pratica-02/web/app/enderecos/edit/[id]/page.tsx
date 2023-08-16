@@ -77,7 +77,7 @@ export default function EditarEnderecos({params}: any) {
   }
 
   return (
-    <div className="container col-md-9 ">
+    <div className="container col-md-9 p-5 ">
       <h1>Edição do Enderecos: {rua}</h1>
 
       <form onSubmit={handleSumit} >

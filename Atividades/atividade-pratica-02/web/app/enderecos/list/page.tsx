@@ -28,7 +28,7 @@ export default function EnderecoTable() {
 
     console.log(listaEndereco)
 
-    const listaFiltrada = listaEndereco.filter((endereco: any) => endereco.rua.toLowerCase().includes(busca.toLowerCase()))
+    const listaFiltrada = listaEndereco.filter((endereco: any) => endereco.nomeUsuario.toLowerCase().includes(busca.toLowerCase()))
 
     return (
 

@@ -62,8 +62,8 @@ export default function CreateEnderecos() {
     }
   }
 
-  return (
-    <div className="container col-md-9 ">
+  return (    
+  <div className='container col-md-9 p-5'>
       <h1>Cadastro de Enderecos: {rua}</h1>
 
       <form onSubmit={handleSumit} >

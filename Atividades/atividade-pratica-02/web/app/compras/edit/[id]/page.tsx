@@ -5,11 +5,11 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import axios from 'axios';
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { useRouter } from "next/navigation";
-import {  retornaComprasPorId} from '@/app/repository/compras/funcoes';
+import { retornaComprasPorId } from '@/app/repository/compras/funcoes';
 import { retornarTodosOsEnderecos } from '@/app/repository/enderecos/funcoes';
 import { retornaTodosOsUsuarios } from '@/app/repository/usuarios/funcoes';
 
-export default function EditCompras({params}: any) {
+export default function EditCompras({ params }: any) {
 
     const { push } = useRouter()
     const id = params.id
@@ -28,12 +28,12 @@ export default function EditCompras({params}: any) {
             setEnderecoId(data[0].enderecoId)
             setData(data[0].data)
         })
-        .catch(error => console.log(error))
+            .catch(error => console.log(error))
         retornarTodosOsEnderecos().then(data => setEmdereco(data))
-        .catch(error => console.log(error))
+            .catch(error => console.log(error))
 
         retornaTodosOsUsuarios().then(data => setUsuario(data))
-        .catch(error => console.log(error))
+            .catch(error => console.log(error))
 
     }, [id])
 
@@ -61,7 +61,7 @@ export default function EditCompras({params}: any) {
 
     return (
 
-        <div className="container col-md-9 ">
+        <div className="container col-md-9 p-5 ">
             <h1>Edicao de compras: { }</h1>
 
             <form onSubmit={handleSumit} >
