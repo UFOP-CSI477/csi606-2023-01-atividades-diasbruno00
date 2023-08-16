@@ -68,7 +68,7 @@ export default function ProdutoTable() {
                                 <button onClick={()=>{
                                     push(`/produtos/edit/${produto.id}`)
                                 }} className="btn btn-success">Editar </button>
-                                
+
                                 <button  className ="btn btn-danger" onClick={ async ()=>{
                                    const response =  await axios.delete(`http://localhost:5555/delete/produto/${produto.id}`)
                                    const status = response.data

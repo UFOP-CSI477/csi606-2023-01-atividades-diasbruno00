@@ -1,5 +1,8 @@
+'use client'
 import Link from "next/link"
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 export default function Menu() {
     return (
@@ -26,8 +29,8 @@ export default function Menu() {
                                 Enderecos
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a className="dropdown-item" href="#">Cadastro</a></li>
-                                <li><a className="dropdown-item" href="#">Lista de enderecos</a></li>
+                                <li><a className="dropdown-item" href={'/enderecos/create'}>Cadastro</a></li>
+                                <li><a className="dropdown-item" href={'/enderecos/list'} >Lista de enderecos</a></li>
                             </ul>
                         </li>
                         <li className="nav-item dropdown">
