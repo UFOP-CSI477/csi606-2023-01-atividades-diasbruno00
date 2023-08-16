@@ -112,20 +112,20 @@ export default function EditarEnderecos({params}: any) {
 
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="htmlForm-label">Rua</label>
+          <label  htmlFor="exampleFormControlInput1" className="form-label">Rua</label>
           <input type="text" value={rua} className="form-control" placeholder='Informe a rua' onChange={(event: ChangeEvent<HTMLInputElement>) => { setRua(event.target.value) }} required />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="htmlForm-label">Numero</label>
+          <label  htmlFor="exampleFormControlInput1" className="form-label">Numero</label>
           <input type="number" value={numero} className="form-control" placeholder='Informe o numero' onChange={(event: ChangeEvent<HTMLInputElement>) => { setNumero(event.target.value) }} required />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="htmlForm-label">Bairro</label>
+          <label  htmlFor="exampleFormControlInput1" className="form-label">Bairro</label>
           <input type="text" value={bairro} className="form-control" placeholder='Informe o bairro' onChange={(event: ChangeEvent<HTMLInputElement>) => { setBairro(event.target.value) }} required />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="htmlForm-label">Telefone</label>
+          <label  htmlFor="exampleFormControlInput1" className="form-label">Telefone</label>
           <input type="text" value={telefone} className="form-control" placeholder='Informe o telefone' onChange={(event: ChangeEvent<HTMLInputElement>) => { setTelefone(event.target.value) }} required />
         </div>
 

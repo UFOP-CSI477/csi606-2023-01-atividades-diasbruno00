@@ -38,7 +38,7 @@ export default function Menu() {
                                 Compras
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a className="dropdown-item" href="#">Cadastro</a></li>
+                                <li><a className="dropdown-item" href={'/compras/create'}>Cadastro</a></li>
                                 <li><a className="dropdown-item" href="#">Lista de Compras</a></li>
                             </ul>
                         </li>
