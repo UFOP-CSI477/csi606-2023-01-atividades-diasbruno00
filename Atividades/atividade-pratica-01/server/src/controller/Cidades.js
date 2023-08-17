@@ -14,6 +14,7 @@ export default class ControllerCidades {
 
         const {nome, estadoId} = req.body
         const cidade  = new Cidades(nome,estadoId)
+        
         try {
             this.bancoCidades.salvarCidadeNoBD(cidade)
         } catch (error) {
@@ -22,7 +23,7 @@ export default class ControllerCidades {
             res.json({erro:`erro ao salvar cidade: ${nome}`})
             
         }
-        res.json({cidade})
+        res.json(cidade)
 
     }
     

@@ -10,6 +10,7 @@ export default class ControllerEnderecos {
     try {
       const { usuarioId, rua, numero, bairro, cidadeId, telefone } = req.body;
 
+  
       const endereco = new Enderecos(
         usuarioId,
         rua,
@@ -18,6 +19,9 @@ export default class ControllerEnderecos {
         cidadeId,
         telefone
       );
+
+      console.log(endereco)
+
       this.banco.salvarEnderecoNoBD(endereco);
       res.json({ sucesso: "endereco salvo com sucesso" });
     } catch (error) {
@@ -74,7 +78,6 @@ export default class ControllerEnderecos {
   recuperarEnderecoPorId = async (req, res) => {
     try {
       const id = req.params.id;
-      console.log(id)
       const endereco = await this.banco.buscaEnderecoPorId(id);
       res.json(endereco);
     } catch (error) {

@@ -30,6 +30,7 @@ export default class ControllerCompras {
   salvarCompra = async (req, res) => {
     try {
       const { usuarioId, enderecoId, data } = req.body;
+      
       const compras = new Compras(usuarioId, enderecoId,data);
      const resposta = await  this.banco.salvarComprasNoBD(compras);
      console.log(resposta)

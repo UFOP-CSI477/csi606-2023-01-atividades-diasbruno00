@@ -4,7 +4,6 @@ import ProdutoDAO from "../database/ProdutoDao.js";
 export default class ControllerProduto {
 
     
-
     constructor() {
         this.bancoProduto = new ProdutoDAO()
     }
@@ -62,10 +61,9 @@ export default class ControllerProduto {
      salvarProduto = (req , res ) => {
 
         let resultadoProduto
+        const { descrisao, valorUnitario } = req.body
 
         try {
-
-            const { descrisao, valorUnitario } = req.body
 
             const produto = new Produto(descrisao, valorUnitario)
 
@@ -77,7 +75,7 @@ export default class ControllerProduto {
             console.log(e)
         }
 
-        res.json({sucesso: 'Produto salvo com sucesso no banco de dados'})
+        res.json({sucesso: `Produto ${descrisao} salvo com sucesso no banco de dados`})
 
     }
 
@@ -110,13 +108,13 @@ export default class ControllerProduto {
             const { descrisao, valorUnitario } = req.body
 
             const produto = new Produto(descrisao, valorUnitario)
-
+         
             this.bancoProduto.updateProduto(produto, id)
 
         } catch (error) {
             res.json({ erro: 'falha ao atualizar produto' })
         }
 
-        res.json({ atualizado: 'atualizado com sucesso' })
+        res.json({ sucesso: `atualizada com sucesso` })
     }
 }

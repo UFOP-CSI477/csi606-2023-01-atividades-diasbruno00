@@ -7,7 +7,7 @@ export default class EnderecosDao {
   buscaEnderecoPorId(id)  {
     return new Promise((resolve, reject) => {
         conexao.query(
-            'select en.id, en.usuarioId, en.cidadeId, en.rua, en.telefone, usu.nomeUsuario, usu.email, usu.senha, ci.nomeCidade, es.nomeEstado, es.sigla from enderecos as en , cidades as ci, usuarios as usu, estados as es  where en.usuarioId = usu.id and en.cidadeId = ci.id and  es.id  = ci.estadosId  and en.id = ? ', [id],
+            'select en.id, en.usuarioId, en.cidadeId, en.rua, en.telefone, en.numero, en.bairro, usu.nomeUsuario, usu.email, usu.senha, ci.nomeCidade, es.nomeEstado, es.sigla from enderecos as en , cidades as ci, usuarios as usu, estados as es where en.usuarioId = usu.id and en.cidadeId = ci.id and  es.id  = ci.estadosId and en.id = ? ', [id],
             (erro, resultado) =>  {
                 if (erro) {
                     reject(erro)
@@ -49,7 +49,7 @@ export default class EnderecosDao {
 listaDeEnderecos(){
     return new Promise((resolve, reject)   =>{
         conexao.query(
-            "select en.id, en.usuarioId, en.cidadeId, en.rua, en.telefone, usu.nomeUsuario, usu.email, usu.senha, ci.nomeCidade, es.nomeEstado, es.sigla from enderecos as en , cidades as ci, usuarios as usu, estados as es where en.usuarioId = usu.id and en.cidadeId = ci.id and  es.id  = ci.estadosId  ",
+            "select en.id, en.usuarioId, en.cidadeId, en.rua, en.telefone, en.numero, en.bairro, usu.nomeUsuario, usu.email, usu.senha, ci.nomeCidade, es.nomeEstado, es.sigla from enderecos as en , cidades as ci, usuarios as usu, estados as es where en.usuarioId = usu.id and en.cidadeId = ci.id and  es.id  = ci.estadosId",
             (erro, resultado)  => {
                 if (erro) {
                     reject(erro)
