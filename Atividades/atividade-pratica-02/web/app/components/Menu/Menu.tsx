@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 export default function Menu() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg bg-danger navbar-dark">
             <div className="container-fluid">
                 <Link className="navbar-brand" href={'/'}> Home </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
