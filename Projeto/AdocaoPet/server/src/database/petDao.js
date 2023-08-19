@@ -25,7 +25,8 @@ const PetDao = new Schema({
     },
     status: {
       type: String
-    },
+    }
+   
 });
 
 export default  mongoose.model("Pet", PetDao);

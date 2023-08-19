@@ -1,19 +1,22 @@
 
 import mongoose from 'mongoose';
 
-const dbUser = 'bd177795';
-const dbPassword = 'aSIegqmvhdC2noM7';
-const dbName = 'adocaoPet';
+const dbUser = 'brunodp'
+const dbPassword = 'qPBZDlreqUh6rys0';
+const dbName = 'adocaoPet'
+
 
 const connect = async () => {
   try {
     await mongoose.connect(
-      `mongodb+srv://${dbUser}:${dbPassword}@adocaopet.dfqhshi.mongodb.net/${dbName}?retryWrites=true&w=majority`,
+      `mongodb+srv://${dbUser}:${dbPassword}@adocaopet.2g1tmi0.mongodb.net/${dbName}?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       }
     );
+
+    //mongodb+srv://${dbUser}:${dbPassword}@adocaopet.2g1tmi0.mongodb.net/${dbName}?retryWrites=true&w=majority
 
     console.log('Conectado ao MongoDB com sucesso');
   } catch (error) {

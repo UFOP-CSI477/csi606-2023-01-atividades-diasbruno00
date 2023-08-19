@@ -1,11 +1,13 @@
 import PetDao from "../database/petDao.js";
 import Pet from "../model/pet.js";
 
+
 export default class ControllerPet {
   constructor() {}
 
   async salvar(req, res) {
     const { nome, raca, idade, tipo, sexo, estado, cidade } = req.body;
+    
 
     try {
 
@@ -23,6 +25,7 @@ export default class ControllerPet {
   async recuperarTodos(req, res) {
     try {
       const listaPet = await PetDao.find();
+      console.log(listaPet)
 
       res.json(listaPet);
     } catch (error) {
@@ -31,13 +34,14 @@ export default class ControllerPet {
     }
   }
 
-  async recuperarPetPorEstado(req, res) {
+  async recuperarPetPorId(req, res) {
     try {
-      const { estado } = req.params;
+      const {id} = req.params;
       
-      const listaPet = await PetDao.find({ estado: estado });
+      const listaPet = await PetDao.findById(id);
 
       res.json(listaPet);
+      
     } catch (error) {
       console.log(error);
       res.json({ erro: "algo deu errodo verifique com a equipe de TI" });

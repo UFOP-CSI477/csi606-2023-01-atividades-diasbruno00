@@ -8,7 +8,6 @@ export default class Pet {
         this.raca = raca
         this.estado = estado
         this.cidade = cidade
-        this.status = 'Disponivel para adoção'
-        
+        this.status = 'Disponivel para adoção'     
 }
 }

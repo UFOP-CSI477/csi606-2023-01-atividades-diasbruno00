@@ -1,16 +1,21 @@
+'use client'
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import axios from 'axios'
 import PetInterface from '../types/PetInterface'
 
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-
+import Link from 'next/link';
 
 const getAllPet = async () => {
 
     try {
         // Rota GET usando Axios
         const pet = await axios.get('http://localhost:3333/pet')
+        console.log(pet.data)
         return pet.data
     } catch (error) {
         console.log(error)
@@ -20,6 +25,7 @@ const getAllPet = async () => {
 }
 
 export default function PetTable() {
+
 
     const [listaPet, setListaPet] = useState<PetInterface[] | []>([]);
     const [busca, setBusca] = useState('')
@@ -38,11 +44,11 @@ export default function PetTable() {
     return (
 
         <div>
-            <nav className="navbar bg-body-tertiary">
+            <nav className="navbar bg-body-tertiary ">
                 <div className="container-fluid">
                     <a className="navbar-brand"></a>
                     <form className="d-flex" role="search" method="get" >
-                        <input className="form-control me-2" type="search" value={busca} onChange={(event: ChangeEvent<HTMLInputElement>) => setBusca(event.target.value)} placeholder="Search" aria-label="Search" />
+                        <input className="form-control me-2" type="search" value={busca} onChange={(event: ChangeEvent<HTMLInputElement>) => setBusca(event.target.value)} placeholder="Busque pelo tipo" aria-label="Search" />
                     </form>
                 </div>
             </nav>
@@ -74,11 +80,15 @@ export default function PetTable() {
                                     <td>{pet.estado}</td>
                                     <td>{pet.cidade}</td>
                                     <td>{pet.status}</td>
-                                    <td> <a href="http://"><button>Quero adotar</button></a></td>
+
+                                    <Link href={`/pet/adote/${pet._id}`}> adote </Link>
+
                                 </tr>
                             )
+                                    
                         })
                     }
+                
                 </tbody>
             </table>
         </div>

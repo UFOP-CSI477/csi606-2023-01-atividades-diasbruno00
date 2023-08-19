@@ -11,6 +11,12 @@ const AdocaoDao = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pet',
         required: true
+    },
+    informacoes: {
+        type: String
+    },
+    status:{
+        type: String
     }
 
 });

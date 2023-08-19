@@ -11,21 +11,20 @@ export default class ControllerAdocao {
     async salvar(req, res){
         try {
 
-            const {idUsuario, idPet} = req.body
+            const { idUsuario , idPet, informacoes} = req.body
+          
+            const dados = await AdocaoDao.create({
+                usuario: idUsuario,
+                pet: idPet,
+                informacoes: informacoes,
+                status: 'Em analise'
+            })
+     
+            res.json({sucesso: 'Seu pedido esta em analise, logo entraremos em contato com voçê'})
 
-            const usuario = await UsuarioDao.findById(idUsuario);
-            const pet = await PetDao.findById(idPet);
-        
-            const adocaoData = {
-              usuario: usuario,
-              pet: pet,
-            };
-        
-            const adocao = await AdocaoDao.create(adocaoData)
-
-            res.json(adocao)
         } catch (error) {
-            
+            console.log(error)
+            res.json({erro: 'erro verifique com a equipe de TI'})
         }
     
     }
@@ -35,6 +34,7 @@ export default class ControllerAdocao {
         try {
             
             const lista = await AdocaoDao.find().populate('usuario').populate('pet')
+
             res.json(lista)
             
         } catch (error) {

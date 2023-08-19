@@ -51,7 +51,7 @@ export default function CreateUser() {
     }
 
     return (
-        <div className="container ">
+        <div className="container col-md-8 p-4 ">
             <form onSubmit={handleSumit}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">nome</label>

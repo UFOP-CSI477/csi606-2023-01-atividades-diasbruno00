@@ -32,8 +32,9 @@ export default function CreatePet() {
             tipo: tipo.value,
             raca: raca.value,
             estado: estado.value,
-            cidade: cidade.value
+            cidade: cidade.value,
         }
+        console.log(data)
         try {
 
             const response = await axios.post('http://localhost:3333/pet', data)
@@ -43,21 +44,23 @@ export default function CreatePet() {
                 `${pet.nome} salvo com sucesso`,
                 'success'
               )
+
         } catch (error) {
             alert(`Erro na inclusão ${nome}`)
         }
     }
 
     return (
-        <div className="container ">
-            <form onSubmit={handleSumit}>
+   
+        <div className="container col-md-8 p-4 " >
+            <form onSubmit={handleSumit} >
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">nome</label>
-                    <input type="text" name='nome' id='nome'  className="form-control"  required/>
+                    <input type="text" name='nome' id='nome'  className="form-control"  />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">idade</label>
-                    <input type="number" name='idade' id='idade'className="form-control" min={0} max={100}   required/>
+                    <input type="number" name='idade' id='idade'className="form-control" min={0} max={100} />
                 </div>
                 
                 <div className="mb-3">
@@ -70,27 +73,29 @@ export default function CreatePet() {
 
                 <div className="mb-3 htmlForm-check">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">Tipo</label>
-                    <input type="text" name='tipo' id='tipo' className="form-control"   required/>
-
+                    <input type="text" name='tipo' id='tipo' className="form-control"   />
                 </div>
+
                 <div className="mb-3 htmlForm-check">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">raca</label>
-                    <input type="text" name='raca' id='raca' className="form-control"   required/>
-
+                    <input type="text" name='raca' id='raca' className="form-control"   />
                 </div>
+
                 <div className="mb-3 htmlForm-check">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">estado</label>
-                    <input type="text" name='estado' id='estado'className="form-control"   required/>
+                    <input type="text" name='estado' id='estado'className="form-control"   />
 
                 </div>
                 <div className="mb-3 htmlForm-check">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">cidade</label>
-                    <input type="text" name='cidade' id='cidade' className="form-control" required />
+                    <input type="text" name='cidade' id='cidade' className="form-control" />
                 </div>
+
 
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
-        
+
     )
+
 }

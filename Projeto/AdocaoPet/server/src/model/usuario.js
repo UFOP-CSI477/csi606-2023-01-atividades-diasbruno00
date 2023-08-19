@@ -4,10 +4,10 @@ export default class Usuario {
     this.nome = nome;
     this.idade = idade;
     this.sexo = sexo
-    this.estado = cpf;
-    this.cidade = email;
-    this.cpf = telefone;
-    this.email = estado;
-    this.telefone = cidade;
+    this.estado = estado;
+    this.cidade = cidade;
+    this.cpf = cpf;
+    this.email = email;
+    this.telefone = telefone;
   }
 }

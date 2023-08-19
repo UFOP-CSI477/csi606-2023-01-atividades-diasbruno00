@@ -11,21 +11,23 @@ const UsuarioDao = new Schema({
     sexo:{
         type: String
     },
-    estado: {
-      type: String
-    }, 
-    cidade:{
-      type: String
-    },
     cpf: {
       type: String
     },
-    email: {
-        type: String
+    email:{
+      type: String
     },
     telefone: {
-        type: String
+      type: String
+    },
+    estado:{
+      type: String
+    },
+    cidade: {
+      type: String
     }
+
+   
 
 });
 

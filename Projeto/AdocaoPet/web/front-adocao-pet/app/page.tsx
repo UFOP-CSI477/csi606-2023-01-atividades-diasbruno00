@@ -1,13 +1,40 @@
 'use client'
-import Menu from "./components/menu/Menu"
+import Link from "next/link";
+import Menu from "./components/menu/Menu";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+
+  const {push} = useRouter()
+  
   return (
+    <div>
+    <Menu /> 
+
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Menu /> 
-      <h1> Sistemas de adoção de pet</h1>     
+      <section className="bg-warning text-white py-5">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-6">
+              <h1 className="mb-4">Encontre um amigo</h1>
+              <p>Ao adotar um animal de estimação, você não apenas ganha um amigo fiel, mas também está dando a um animal indefeso uma segunda chance de ser parte de uma família amorosa. Cada animal tem sua própria história, personalidade e amor para dar. Seja um cão brincalhão, um gato afetuoso ou um adorável coelho, todos eles merecem um lar onde possam prosperar.</p>
+              <p>Adote uns de nossos amigos</p>
+              <button className="btn btn-primary" onClick={()=>{
+                console.log('click')
+                push('/pet/list')
+              }}>
+                Adote
+              </button>
+              
+            </div>
+            <div className="col-md-6">
+              <img src="img/pet.png" alt="Pets" className="img-fluid w-95" />
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-  )
+    </div>
+  );
 }
