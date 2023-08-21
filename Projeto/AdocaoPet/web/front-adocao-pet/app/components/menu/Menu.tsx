@@ -11,7 +11,6 @@ export default function Menu() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav ">
                         <Link className="nav-link " aria-current="page" href="/user/create">Cadastro Usuario</Link>
-                        <Link className="nav-link " aria-current="page" href="/pet/create">Cadastro Pet</Link>
                         <Link className="nav-link " aria-current="page" href="/pet/list">Adote</Link>
                         <Link className="nav-link " aria-current="page" href="/pet/list/analise">Pedidos em analise</Link>
                         <Link className="nav-link " aria-current="page" href="/sobre">Sobre nos</Link>

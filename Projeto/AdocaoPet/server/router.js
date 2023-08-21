@@ -17,6 +17,7 @@ router.get('/pet',controllerPet.recuperarTodos)
 router.post('/pet',controllerPet.salvar)
 router.get('/pet/:id',controllerPet.recuperarPetPorId)
 
+
 // rota usuario
 router.post('/usuario', controllerUsuario.salvar)
 router.get('/usuario/:id', controllerUsuario.recuperarPorId)
@@ -26,6 +27,7 @@ router.get('/usuarios',controllerUsuario.recuperarTodos)
 
 router.get('/adocao',controllerAdocao.recuperarTodos)
 router.post('/adocao', controllerAdocao.salvar)
+router.delete('/adocao/:id',controllerAdocao.excluirAdocaoPorId)
 
 
 export default  router

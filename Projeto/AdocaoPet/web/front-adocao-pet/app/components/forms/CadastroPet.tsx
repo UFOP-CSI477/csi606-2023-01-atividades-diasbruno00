@@ -92,7 +92,7 @@ export default function CreatePet() {
                 </div>
 
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-success" > Confirmar </button>
             </form>
         </div>
 

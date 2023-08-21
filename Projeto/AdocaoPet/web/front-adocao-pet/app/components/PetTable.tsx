@@ -9,6 +9,7 @@ import PetInterface from '../types/PetInterface'
 
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const getAllPet = async () => {
 
@@ -26,6 +27,7 @@ const getAllPet = async () => {
 
 export default function PetTable() {
 
+    const { push } = useRouter()
 
     const [listaPet, setListaPet] = useState<PetInterface[] | []>([]);
     const [busca, setBusca] = useState('')
@@ -58,13 +60,11 @@ export default function PetTable() {
                         <th scope="col">Nome</th>
                         <th scope="col">Idade</th>
                         <th scope="col">Sexo</th>
-                        <th scope="col">Tipo</th> 
+                        <th scope="col">Tipo</th>
                         <th scope="col">Raca</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Cidade</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Adote</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -81,14 +81,18 @@ export default function PetTable() {
                                     <td>{pet.cidade}</td>
                                     <td>{pet.status}</td>
 
-                                    <Link href={`/pet/adote/${pet._id}`}> adote </Link>
+                                    <button type="button" className="btn btn-success"  onClick={() => {
+                                        push(` /pet/adote/${pet._id}`)
+                                    }}>
+                                        Adote este pet
+                                    </button>
 
                                 </tr>
                             )
-                                    
+
                         })
                     }
-                
+
                 </tbody>
             </table>
         </div>

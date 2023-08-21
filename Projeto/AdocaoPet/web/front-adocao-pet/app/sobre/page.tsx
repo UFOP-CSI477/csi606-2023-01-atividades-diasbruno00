@@ -4,7 +4,7 @@ import Menu from '../components/menu/Menu';
 
 export default function SobreNos() {
     return (
-        <div>
+        <div style={{ height: "100vh", backgroundColor: "#85E6C5" }}>
         <Menu />
         <div className="container py-5">
             <div className="row">

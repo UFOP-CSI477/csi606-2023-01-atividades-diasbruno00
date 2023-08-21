@@ -4,6 +4,8 @@ import { FormEvent, useEffect, useState } from "react";
 import axios from 'axios'
 import PetCard from "@/app/components/card/Card";
 import Menu from "@/app/components/menu/Menu";
+import Swal from 'sweetalert2';
+
 
 const recuperarPetId = async (id: number) => {
     const response = await axios.get(`http://localhost:3333/pet/${id}`)
@@ -35,7 +37,7 @@ export default function AdotePet({ params }: any) {
     }, [id]);
 
     const handleSubmit = async (event: FormEvent) => {
-      
+
         event.preventDefault()
 
         const data = {
@@ -47,10 +49,18 @@ export default function AdotePet({ params }: any) {
 
         const response = await axios.post(`http://localhost:3333/adocao`, data)
         const dados = response.data
-        if(dados.sucesso){
-                alert(dados.sucesso)
-        }else{
-            alert(dados.erro)
+        if (dados.sucesso) {
+            await Swal.fire(
+                'Good job!',
+                `${dados.sucesso}`,
+                'success'
+            )
+        } else {
+            await Swal.fire(
+                'Cancelled !',
+                `${dados.erro}`,
+                'error'
+            )
         }
     }
 
@@ -61,8 +71,6 @@ export default function AdotePet({ params }: any) {
             <form onSubmit={handleSubmit}>
 
                 <div className="container col-md-9 p-5 ">
-
-                    <PetCard pet={pet} />
 
                     <label htmlFor="usuario">Informe seu usuario</label>
                     <select className="form-select" aria-label="Default select example" name="idUsuario" value={usuarioId} onChange={(event) => setUsuarioId(event.target.value)}>
@@ -76,12 +84,14 @@ export default function AdotePet({ params }: any) {
                         }
                     </select>
 
-                    <div className="mb-2 p-3">
+                    <div className="mb-3">
                         <label htmlFor="exampleFormControlTextarea1" className="form-label">Porque devemos aceitar sua solitação ?</label>
                         <textarea className="form-control" id="exampleFormControlTextarea1" value={informacoes} rows={7} onChange={(event) => setInformacoes(event.target.value)} placeholder="Informe um pouco sobre voce"></textarea>
                     </div>
 
-                  <button type="submit"> Enviar </button>
+                    <PetCard pet={pet} />
+
+                    <button  className="btn btn-success" type="submit"> Confirmar</button>
                 </div>
 
             </form>

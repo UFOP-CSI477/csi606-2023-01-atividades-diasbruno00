@@ -45,6 +45,7 @@ export default function CreateUser() {
                 `${usuario.nome} salvo com sucesso`,
                 'success'
             )
+            push('/pet/list')
         } catch (error) {
             alert(`Erro na inclusão ${nome}`)
         }
@@ -97,7 +98,7 @@ export default function CreateUser() {
                     <input type="text" name='cidade' id='cidade' className="form-control" required />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-success" > Confirmar </button>
             </form>
         </div>
 

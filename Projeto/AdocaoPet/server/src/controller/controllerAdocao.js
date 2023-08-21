@@ -20,7 +20,7 @@ export default class ControllerAdocao {
                 status: 'Em analise'
             })
      
-            res.json({sucesso: 'Seu pedido esta em analise, logo entraremos em contato com voçê'})
+            res.json({sucesso: 'Seu pedido esta em analise, aguarde o retorno no email !'})
 
         } catch (error) {
             console.log(error)
@@ -45,4 +45,20 @@ export default class ControllerAdocao {
         }
     
     }
+
+    
+  async excluirAdocaoPorId (req, res) {
+    try {
+      const {id} = req.params;
+      const dados = await AdocaoDao.findById(id).populate('usuario').populate('pet')
+      const petExcluido = await PetDao.findOneAndDelete({ _id: dados.pet._id });
+      const excluirAdocao = await AdocaoDao.findByIdAndDelete({_id: dados._id})
+
+      res.json({sucesso: `Adoção confirmada com sucesso, ${dados.usuario.nome} recebera um email com os proximos passos !`});
+      
+    } catch (error) {
+      console.log(error);
+      res.json({ erro: "algo deu errodo verifique com a equipe de TI" });
+    }
+  }
 }

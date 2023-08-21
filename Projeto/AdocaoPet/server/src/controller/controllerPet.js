@@ -1,3 +1,4 @@
+import AdocaoDao from "../database/adocaoDao.js";
 import PetDao from "../database/petDao.js";
 import Pet from "../model/pet.js";
 
@@ -47,4 +48,5 @@ export default class ControllerPet {
       res.json({ erro: "algo deu errodo verifique com a equipe de TI" });
     }
   }
+
 }
