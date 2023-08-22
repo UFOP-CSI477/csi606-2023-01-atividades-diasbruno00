@@ -7,6 +7,7 @@ import { FormEvent } from "react"
 import axios from 'axios'
 import { useRouter } from "next/navigation"
 import Swal from 'sweetalert2';
+import MenuAdmin from '../menu/menuAdmin/Menu';
 
 // htmlFormulario
 export default function CreateUser() {
@@ -52,6 +53,7 @@ export default function CreateUser() {
     }
 
     return (
+
         <div className="container col-md-8 p-4 ">
             <form onSubmit={handleSumit}>
                 <div className="mb-3">
@@ -101,6 +103,6 @@ export default function CreateUser() {
                 <button type="submit" className="btn btn-success" > Confirmar </button>
             </form>
         </div>
-
+        
     )
 }

@@ -11,7 +11,7 @@ export default function ListPet(){
     return(
         <>
         <Menu />
-        <PetTable  />
+        <PetTable status={'adocao'} />
         </>
     )
 }

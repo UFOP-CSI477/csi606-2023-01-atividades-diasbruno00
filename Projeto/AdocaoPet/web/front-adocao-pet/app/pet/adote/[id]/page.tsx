@@ -5,6 +5,7 @@ import axios from 'axios'
 import PetCard from "@/app/components/card/Card";
 import Menu from "@/app/components/menu/Menu";
 import Swal from 'sweetalert2';
+import { useRouter } from "next/navigation";
 
 
 const recuperarPetId = async (id: number) => {
@@ -19,8 +20,7 @@ const recuperarTodosUsuarios = async () => {
 
 export default function AdotePet({ params }: any) {
 
-
-
+    const { push } = useRouter()
     const id = params.id
     const [pet, setPet] = useState<any>([])
     const [informacoes, setInformacoes] = useState('')
@@ -55,6 +55,8 @@ export default function AdotePet({ params }: any) {
                 `${dados.sucesso}`,
                 'success'
             )
+            push('/')
+
         } else {
             await Swal.fire(
                 'Cancelled !',

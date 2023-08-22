@@ -10,6 +10,7 @@ import PetInterface from '../types/PetInterface'
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
 
 const getAllPet = async () => {
 
@@ -25,7 +26,7 @@ const getAllPet = async () => {
 
 }
 
-export default function PetTable() {
+export default function PetTable({ status }: any) {
 
     const { push } = useRouter()
 
@@ -45,7 +46,8 @@ export default function PetTable() {
 
     return (
 
-        <div>
+
+        <div >
             <nav className="navbar bg-body-tertiary ">
                 <div className="container-fluid">
                     <a className="navbar-brand"></a>
@@ -54,7 +56,7 @@ export default function PetTable() {
                     </form>
                 </div>
             </nav>
-            <table className="table">
+            <table className="table" >
                 <thead>
                     <tr>
                         <th scope="col">Nome</th>
@@ -81,11 +83,54 @@ export default function PetTable() {
                                     <td>{pet.cidade}</td>
                                     <td>{pet.status}</td>
 
-                                    <button type="button" className="btn btn-success"  onClick={() => {
-                                        push(` /pet/adote/${pet._id}`)
-                                    }}>
-                                        Adote este pet
-                                    </button>
+
+                                    {status === 'adocao' ? (
+                                        <button type="button" className="btn btn-success" onClick={() => {
+                                            push(`/pet/adote/${pet._id}`);
+                                        }}>
+                                            Adote este pet
+                                        </button>
+                                    ) : (
+
+                                        <div>
+                                        <button type="button" className="btn btn-success" onClick={() => {
+                                            push(`/pet/edit/list/${pet._id}`);
+                                        }}>
+                                            Editar
+                                        </button>
+
+                                         <button type="button" className="btn btn-danger"
+                                          onClick={ async() => {
+                                            const result = await Swal.fire({
+                                                title: "Deseja realmente excluir os dados?",
+                                                text: "Não será possível recuperar depois da exclusão",
+                                                icon: "warning",
+                                                showCancelButton: true,
+                                                confirmButtonColor: "#3085d6",
+                                                cancelButtonColor: "#d33",
+                                                confirmButtonText: "Sim, excluir!"
+                                              });
+                                          
+                                              if (result.isConfirmed) {
+                                                const response = await axios.delete(`http://localhost:3333/pet/${pet._id}`)
+                                                const data = response.data
+                                                if(data.nome){
+                                                    await Swal.fire("Excluído!", `Pet ${data.nome} excluido com sucesso`, "success");
+                                                    location.reload()
+                                                }else{
+                                                    await Swal.fire("Erro", data.erro, "error");
+                                                }
+                                          
+                                              }
+                                                
+                                            }}>
+                                                Excluir
+                                        </button>
+
+                                        </div>
+                                        
+                                    )}
+
 
                                 </tr>
                             )

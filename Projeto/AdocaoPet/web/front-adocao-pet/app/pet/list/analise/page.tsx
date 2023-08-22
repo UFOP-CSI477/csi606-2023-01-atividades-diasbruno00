@@ -3,9 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import Menu from '@/app/components/menu/Menu'
 import Swal from 'sweetalert2';
-
+import MenuAdmin from '@/app/components/menu/menuAdmin/Menu';
 
 
 const retornaListaDePedidosDeAdocao = async () => {
@@ -38,7 +37,8 @@ export default function ListaPedidosAdocao() {
 
     return (
         <>
-            <Menu />
+            <MenuAdmin />
+
             <div>
                 <nav className="navbar bg-body-tertiary ">
                     <div className="container-fluid">

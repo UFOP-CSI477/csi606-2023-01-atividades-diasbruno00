@@ -44,6 +44,7 @@ export default function CreatePet() {
                 `${pet.nome} salvo com sucesso`,
                 'success'
               )
+              push('/pet/edit/list')
 
         } catch (error) {
             alert(`Erro na inclusão ${nome}`)
@@ -52,7 +53,7 @@ export default function CreatePet() {
 
     return (
    
-        <div className="container col-md-8 p-4 " >
+        <div className="container col-md-8 p-4"  >
             <form onSubmit={handleSumit} >
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="htmlForm-label">nome</label>
@@ -66,8 +67,8 @@ export default function CreatePet() {
                 <div className="mb-3">
                 <select name='sexo' id="sexo" className="form-select" aria-label="Default select example">
                     <option selected>Sexo</option>
-                    <option value="masculino">Macho</option>
-                    <option value="feminino">Fémea</option>
+                    <option value="Macho">Macho</option>
+                    <option value="Femea">Fémea</option>
                 </select>
                 </div>
 

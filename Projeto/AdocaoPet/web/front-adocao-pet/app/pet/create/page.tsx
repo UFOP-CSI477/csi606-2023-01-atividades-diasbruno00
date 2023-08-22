@@ -1,8 +1,7 @@
 'use client'
 
-import Menu from "@/app/components/menu/Menu";
 import CreatePet from "@/app/components/forms/CadastroPet";
-
+import MenuAdmin from "@/app/components/menu/menuAdmin/Menu";
 
 export default function ListPet(){
 
@@ -10,7 +9,7 @@ export default function ListPet(){
   
     return(
         <>
-        <Menu />
+        <MenuAdmin />
         <CreatePet />
         </>
     )

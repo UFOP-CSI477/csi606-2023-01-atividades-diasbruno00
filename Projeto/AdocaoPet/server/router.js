@@ -16,6 +16,8 @@ const controllerAdocao = new ControllerAdocao()
 router.get('/pet',controllerPet.recuperarTodos)
 router.post('/pet',controllerPet.salvar)
 router.get('/pet/:id',controllerPet.recuperarPetPorId)
+router.put('/pet/:id',controllerPet.atualizarDadosPet)
+router.delete('/pet/:id',controllerPet.excluirPet)
 
 
 // rota usuario
