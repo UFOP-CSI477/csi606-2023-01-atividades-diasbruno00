@@ -24,7 +24,7 @@ Funcionalidades não implementadas: Sistema de login, historico de vacinação
 Acredito que o principal desafio foi aprender o nextjs, pois nunca tinha utilizado framework no frontend, mais gostei e continuarei aprimorando meu conhecimento no nextjs, incluse aprimando este projeto. 
 
 ### 5. Instruções para instalação e execução
-Apos baixar o projeto na maquina, abrir a pasta web na sua IDE e executar o comando npm i para instalar as dependencias do projeto e npm start para subir o backend.
+Apos baixar o projeto na maquina, abrir a pasta server na sua IDE e executar o comando npm i para instalar as dependencias do projeto e npm start para subir o backend.
 
 Segundo passo e abrir a pasta frontend na sua IDE e executar o comando npm run dev e abrir a aplicação no seguinte link 
 
